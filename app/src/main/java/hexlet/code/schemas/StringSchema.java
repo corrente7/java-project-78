@@ -1,33 +1,21 @@
 package hexlet.code.schemas;
 
-import hexlet.code.Validator;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
 public class StringSchema implements BaseSchema{
-    public static void main(String[] args) {
-        Validator v = new Validator();
-        StringSchema schema = v.string();
-        //schema.minLength(8);
-        //schema.contains("qw");
-        //schema.isValid("");
-        schema.contains("whatthe").isValid("what does the fox say");
-        //System.out.println(schema.isValid("hghgh"));
-        System.out.println(schema.isValid("what does the fox say"));
-    }
+
     List<Predicate<String>> list = new ArrayList<>();
 
     @Override
     public boolean isValid(Object object) {
         boolean checkType = isInstance().test(object);
-        //list.forEach(predicate -> System.out.println(predicate.test((String) object)));
         return checkType && list.stream().noneMatch(s -> s.test((String) object) == false);
     }
    @Override
     public Predicate isInstance() {
-        return (s -> s instanceof String);
+        return (s -> s instanceof String || s == null);
     }
 
     public List<Predicate<String>> addToList(Predicate<String> predicate) {
@@ -36,6 +24,7 @@ public class StringSchema implements BaseSchema{
     }
 
     public StringSchema required() {
+        addToList(s -> s != null);
         addToList(s -> !s.equals(""));
         return this;
         }
