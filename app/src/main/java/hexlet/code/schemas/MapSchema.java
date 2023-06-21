@@ -11,7 +11,7 @@ public class MapSchema implements BaseSchema {
     @Override
     public boolean isValid(Object object) {
         boolean checkType = isInstance().test(object);
-        return checkType && list.stream().noneMatch(s -> s.test((Map) object) == false);
+        return checkType && list.stream().noneMatch(s -> !s.test((Map) object));
     }
 
     @Override
@@ -40,7 +40,7 @@ public class MapSchema implements BaseSchema {
             for (Map.Entry<String, BaseSchema> entry : schemas.entrySet()) {
                 if (map.containsKey(entry.getKey())) {
                     result = entry.getValue().isValid(map.get(entry.getKey()));
-                    if (result == false) {
+                    if (!result) {
                         break;
                     }
                 }

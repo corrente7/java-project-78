@@ -11,7 +11,7 @@ public class NumberSchema implements BaseSchema {
     @Override
     public boolean isValid(Object object) {
         boolean checkType = isInstance().test(object);
-        return checkType && list.stream().noneMatch(s -> s.test(((Integer)object)) == false);
+        return checkType && list.stream().noneMatch(s -> !s.test(((Integer) object)));
     }
     @Override
     public Predicate isInstance() {

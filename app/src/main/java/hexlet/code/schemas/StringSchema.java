@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class StringSchema implements BaseSchema{
+public class StringSchema implements BaseSchema {
 
     List<Predicate<String>> list = new ArrayList<>();
 
     @Override
     public boolean isValid(Object object) {
         boolean checkType = isInstance().test(object);
-        return checkType && list.stream().noneMatch(s -> s.test((String) object) == false);
+        return checkType && list.stream().noneMatch(s -> !s.test((String) object));
     }
-   @Override
+    @Override
     public Predicate isInstance() {
         return (s -> s instanceof String || s == null);
     }
@@ -27,7 +27,7 @@ public class StringSchema implements BaseSchema{
         addToList(s -> s != null);
         addToList(s -> !s.equals(""));
         return this;
-        }
+    }
 
     public StringSchema minLength(int minLength) {
         addToList(s -> s.length() > minLength);
