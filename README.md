@@ -18,22 +18,22 @@ If the data matches all the limitations specified in the schema, isValid() retur
 # Usage: # 
 ### Strings Validation ###
 
-Validator v = new Validator();
+Validator v = new Validator();  
 
-StringSchema schema = v.string();
+StringSchema schema = v.string();  
 
 _// before required()_
 
-schema.isValid(""); // true
+schema.isValid(""); // true  
 schema.isValid(null); // true
 
 schema.required();
 
-schema.isValid(null); // false
-schema.isValid(""); // false
-schema.isValid(5); // false
-schema.isValid("what does the fox say"); // true
-schema.isValid("hexlet"); // true
+schema.isValid(null); // false  
+schema.isValid(""); // false  
+schema.isValid(5); // false  
+schema.isValid("what does the fox say"); // true  
+schema.isValid("hexlet"); // true  
 
 schema.contains("wh").isValid("what does the fox say"); // true
 schema.contains("what").isValid("what does the fox say"); // true
