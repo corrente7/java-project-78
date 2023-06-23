@@ -13,7 +13,7 @@ The steps are following:
 1) Create an object of validator
 2) Determine a data validation schema using a set of methods (limitations) for each data type.
 3) Call isValid() on the validation schema with the data that requires validation.
-If the data matches all the limitations specified in the schema isValid() returns true, otherwise - false.
+If the data matches all the limitations specified in the schema, isValid() returns true, otherwise - false.
 
 # Usage: # 
 ### Strings Validation ###
