@@ -18,14 +18,11 @@ If the data matches all the limitations specified in the schema, isValid() retur
 # Usage: # 
 ### Strings Validation ###
 
-import hexlet.code.Validator;
-import hexlet.code.schemas.StringSchema;
-
 Validator v = new Validator();
 
 StringSchema schema = v.string();
 
-// before required()
+_// before required()_
 schema.isValid(""); // true
 schema.isValid(null); // true
 
@@ -45,9 +42,6 @@ schema.isValid("what does the fox say"); // false
 
 ### Numbers Validation ###
 
-import hexlet.code.Validator;
-import hexlet.code.schemas.NumberSchema;
-
 Validator v = new Validator();
 
 NumberSchema schema = v.number();
@@ -62,7 +56,7 @@ schema.isValid(null); // false
 schema.isValid("5"); // false
 schema.isValid(10) // true
 
-// positive() was called ealier
+_// positive() was called ealier_
 schema.isValid(-10); // false
 
 schema.isValid(0); // false
@@ -75,9 +69,6 @@ schema.isValid(4); // false
 schema.isValid(11); // false
 
 ### Maps Validation ###
-
-import hexlet.code.Validator;
-import hexlet.code.schemas.MapSchema;
 
 Validator v = new Validator();
 
@@ -111,14 +102,14 @@ MapSchema schema = v.map();
 
 Map<String, BaseSchema> schemas = new HashMap<>();
 
-// setting a validation schema for "name" and "age"
+_// setting a validation schema for "name" and "age"_
 schemas.put("name", v.string().required());
 schemas.put("age", v.number().positive());
 
-// passing the schemas to shape() method
+_// passing the schemas to shape() method_
 schema.shape(schemas);
 
-// checking objects
+_// checking objects_
 Map<String, Object> human1 = new HashMap<>();
 human1.put("name", "Kolya");
 human1.put("age", 100);
