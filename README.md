@@ -23,6 +23,7 @@ Validator v = new Validator();
 StringSchema schema = v.string();
 
 _// before required()_
+
 schema.isValid(""); // true
 schema.isValid(null); // true
 
@@ -46,7 +47,8 @@ Validator v = new Validator();
 
 NumberSchema schema = v.number();
 
-// before required()
+_// before required()_
+
 schema.isValid(null); // true
 schema.positive().isValid(null); // true
 
@@ -57,6 +59,7 @@ schema.isValid("5"); // false
 schema.isValid(10) // true
 
 _// positive() was called ealier_
+
 schema.isValid(-10); // false
 
 schema.isValid(0); // false
@@ -103,13 +106,16 @@ MapSchema schema = v.map();
 Map<String, BaseSchema> schemas = new HashMap<>();
 
 _// setting a validation schema for "name" and "age"_
+
 schemas.put("name", v.string().required());
 schemas.put("age", v.number().positive());
 
 _// passing the schemas to shape() method_
+
 schema.shape(schemas);
 
 _// checking objects_
+
 Map<String, Object> human1 = new HashMap<>();
 human1.put("name", "Kolya");
 human1.put("age", 100);
