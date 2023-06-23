@@ -7,6 +7,7 @@ Data Validator
 
 # Description and usage: # 
 Student project in Hexlet school. 
+
 Validates strings, numbers and maps.
 The steps are following:
 1) Create an object of validator
