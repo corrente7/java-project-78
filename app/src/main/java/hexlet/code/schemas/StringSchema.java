@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class StringSchema implements BaseSchema {
+public final class StringSchema implements BaseSchema {
 
-    List<Predicate<String>> list = new ArrayList<>();
+    private List<Predicate<String>> list = new ArrayList<>();
 
     @Override
     public boolean isValid(Object object) {

@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 
-public class MapSchema implements BaseSchema {
+public final class MapSchema implements BaseSchema {
 
-    List<Predicate<Map>> list = new ArrayList<>();
+    private List<Predicate<Map>> list = new ArrayList<>();
     @Override
     public boolean isValid(Object object) {
         boolean checkType = isInstance().test(object);
