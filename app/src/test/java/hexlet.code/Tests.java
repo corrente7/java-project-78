@@ -12,7 +12,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Tests {
+public final class Tests {
     private StringSchema schema1;
     private NumberSchema schema2;
     private MapSchema schema3;
