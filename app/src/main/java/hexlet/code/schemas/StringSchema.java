@@ -1,27 +1,16 @@
 package hexlet.code.schemas;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
+public final class StringSchema extends BaseSchema {
 
-public final class StringSchema implements BaseSchema {
-
-    private List<Predicate<String>> list = new ArrayList<>();
+    public StringSchema() {
+        this.addToList(s -> s == null || s instanceof String);
+    }
 
     @Override
     public boolean isValid(Object object) {
-        boolean checkType = isInstance().test(object);
-        return checkType && list.stream().noneMatch(s -> !s.test((String) object));
-    }
-    @Override
-    public Predicate isInstance() {
-        return (s -> s instanceof String || s == null);
+        return super.isValid(object);
     }
 
-    public List<Predicate<String>> addToList(Predicate<String> predicate) {
-        list.add(predicate);
-        return list;
-    }
 
     public StringSchema required() {
         addToList(s -> s != null);
@@ -30,12 +19,18 @@ public final class StringSchema implements BaseSchema {
     }
 
     public StringSchema minLength(int minLength) {
-        addToList(s -> s.length() > minLength);
+        addToList(s -> {
+            String s1 = (String)s;
+            return s1.length() > minLength;
+        });
         return this;
     }
 
     public StringSchema contains(String content) {
-        addToList(s -> s.contains(content));
+        addToList(s -> {
+            String s1 = (String)s;
+            return s1.contains(content);
+        });
         return this;
     }
 }

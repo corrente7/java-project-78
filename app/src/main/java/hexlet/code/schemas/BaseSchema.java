@@ -1,11 +1,19 @@
 package hexlet.code.schemas;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 
-public interface BaseSchema {
+public abstract class BaseSchema {
 
-    boolean isValid(Object object);
+    List<Predicate> list = new ArrayList<>();
 
-    Predicate isInstance();
+    public boolean isValid(Object object) {
+        return list.stream().allMatch(s -> s.test(object));
+    }
 
+    public List<Predicate> addToList(Predicate predicate) {
+        list.add(predicate);
+        return list;
+    }
 }
