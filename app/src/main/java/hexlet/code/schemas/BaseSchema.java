@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 
 public abstract class BaseSchema {
 
-    public List<Predicate> list = new ArrayList<>();
+    private List<Predicate> list = new ArrayList<>();
 
     /**
      * Checks validity of the scheme.
