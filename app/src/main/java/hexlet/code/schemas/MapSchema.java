@@ -23,7 +23,7 @@ public final class MapSchema extends BaseSchema {
             boolean result = false;
             Map map1 = (Map) map;
             if (map1.size() == size) {
-            result = true;
+                result = true;
             }
             return result;
         });

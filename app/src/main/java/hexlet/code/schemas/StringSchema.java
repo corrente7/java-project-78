@@ -20,7 +20,7 @@ public final class StringSchema extends BaseSchema {
 
     public StringSchema minLength(int minLength) {
         addToList(s -> {
-            String s1 = (String)s;
+            String s1 = (String) s;
             return s1.length() > minLength;
         });
         return this;
@@ -28,7 +28,7 @@ public final class StringSchema extends BaseSchema {
 
     public StringSchema contains(String content) {
         addToList(s -> {
-            String s1 = (String)s;
+            String s1 = (String) s;
             return s1.contains(content);
         });
         return this;

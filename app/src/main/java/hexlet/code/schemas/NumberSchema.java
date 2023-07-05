@@ -5,7 +5,7 @@ import java.util.Objects;
 public final class NumberSchema extends BaseSchema {
 
     public NumberSchema() {
-       this.addToList(num -> num == null | num instanceof Integer);
+        addToList(num -> num == null | num instanceof Integer);
     }
 
     @Override
