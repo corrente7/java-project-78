@@ -6,12 +6,12 @@ import java.util.function.Predicate;
 
 public abstract class BaseSchema {
 
-    List<Predicate> list = new ArrayList<>();
+    public List<Predicate> list = new ArrayList<>();
 
     /**
      * Checks validity of the scheme.
      * @param object
-     * @return scheme is valid or no
+     * @return scheme is valid or not
      */
     public boolean isValid(Object object) {
         return list.stream().allMatch(s -> s.test(object));

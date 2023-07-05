@@ -10,10 +10,10 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MapSchemaTest {
+public final class MapSchemaTest {
 
     private MapSchema schema3;
-    Validator v;
+    private Validator v;
 
     @BeforeEach
     void initEach() {
