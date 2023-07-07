@@ -15,22 +15,21 @@ public final class StringSchemaTest {
         schema1 = v.string();
     }
     @Test
-    void stringTest1() {
-        schema1.isValid(null);
+    void testRequired() {
+        assertThat(schema1.isValid(null)).isTrue();
         schema1.required();
-        //schema.minLength(5);
         boolean expected = schema1.isValid(null);
         assertThat(expected).isFalse();
     }
 
     @Test
-    void stringTest2() {
+    void testWithNumber() {
         boolean expected = schema1.isValid(5);
         assertThat(expected).isFalse();
     }
 
     @Test
-    void stringTest3() {
+    void testContains() {
         boolean expected = schema1.contains("at").isValid("what does the fox say");
         assertThat(expected).isTrue();
     }

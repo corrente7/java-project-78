@@ -16,37 +16,37 @@ public final class NumberSchemaTest {
     }
 
     @Test
-    void numberTest1() {
+    void TestWithString() {
         boolean expected = schema2.isValid("sth");
         assertThat(expected).isFalse();
     }
 
     @Test
-    void numberTest2() {
-        schema2.isValid(null);
+    void testRequired() {
+        assertThat(schema2.isValid(null)).isTrue(); // true
         schema2.required();
         boolean expected = schema2.isValid(null);
         assertThat(expected).isFalse();
     }
 
     @Test
-    void numberTest3() {
+    void testRange() {
         boolean expected = schema2.range(5, 10).isValid(5);
         assertThat(expected).isTrue();
     }
 
     @Test
-    void numberTest4() {
-        schema2.isValid(null);
-        schema2.positive().isValid(7); // true
+    void testWithNull() {
+        assertThat(schema2.isValid(null)).isTrue(); // true
+        assertThat(schema2.positive().isValid(7)).isTrue(); // true
         schema2.required();
         boolean expected = schema2.isValid(null); // false
         assertThat(expected).isFalse();
     }
 
     @Test
-    void numberTest5() {
-        schema2.isValid(null);
+    void testPositiveWithNull() {
+        assertThat(schema2.isValid(null)).isTrue(); // true
         boolean expected = schema2.positive().isValid(null); // true
         assertThat(expected).isTrue();
     }

@@ -22,26 +22,26 @@ public final class MapSchemaTest {
     }
 
     @Test
-    void mapTest1() {
-        schema3.isValid(null); // true
+    void testRequired() {
+        assertThat(schema3.isValid(null)).isTrue(); // true
         schema3.required();
         boolean expected = schema3.isValid(null); // false
         assertThat(expected).isFalse();
     }
 
     @Test
-    void mapTest2() {
-        schema3.isValid(new HashMap()); // true
+    void testSizeof() {
+        assertThat(schema3.isValid(new HashMap())).isTrue(); // true
         Map<String, String> data = new HashMap<>();
         data.put("key1", "value1");
-        schema3.isValid(data); // true
+        assertThat(schema3.isValid(data)).isTrue(); // true
         schema3.sizeof(2);
         boolean expected = schema3.isValid(data); // false
         assertThat(expected).isFalse();
     }
 
     @Test
-    void mapTest3() {
+    void testShape1() {
         Map<String, BaseSchema> schemas = new HashMap<>();
         schemas.put("name", v.string().required());
         schemas.put("age", v.number().positive());
@@ -54,7 +54,7 @@ public final class MapSchemaTest {
     }
 
     @Test
-    void mapTest4() {
+    void testShape2() {
         Map<String, BaseSchema> schemas = new HashMap<>();
         schemas.put("name", v.string().required());
         schemas.put("age", v.number().positive());
@@ -67,7 +67,7 @@ public final class MapSchemaTest {
     }
 
     @Test
-    void mapTest5() {
+    void testShape3() {
         Map<String, BaseSchema> schemas = new HashMap<>();
         schemas.put("name", v.string().required());
         schemas.put("age", v.number().positive());
@@ -80,7 +80,7 @@ public final class MapSchemaTest {
     }
 
     @Test
-    void mapTest6() {
+    void testShape4() {
         Map<String, BaseSchema> schemas = new HashMap<>();
         schemas.put("name", v.string().required());
         schemas.put("age", v.number().positive());
