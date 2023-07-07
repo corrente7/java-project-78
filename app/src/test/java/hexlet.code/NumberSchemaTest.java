@@ -16,7 +16,7 @@ public final class NumberSchemaTest {
     }
 
     @Test
-    void TestWithString() {
+    void testWithString() {
         boolean expected = schema2.isValid("sth");
         assertThat(expected).isFalse();
     }
