@@ -6,31 +6,18 @@ public final class StringSchema extends BaseSchema {
         this.addToList(s -> s == null || s instanceof String);
     }
 
-    @Override
-    public boolean isValid(Object object) {
-        return super.isValid(object);
-    }
-
-
     public StringSchema required() {
-        addToList(s -> s != null);
-        addToList(s -> !s.equals(""));
+        addToList(s -> s != null && !s.equals(""));
         return this;
     }
 
     public StringSchema minLength(int minLength) {
-        addToList(s -> {
-            String s1 = (String) s;
-            return s1.length() > minLength;
-        });
+        addToList( s -> s == null || ((String) s).length() >= minLength);
         return this;
     }
 
     public StringSchema contains(String content) {
-        addToList(s -> {
-            String s1 = (String) s;
-            return s1.contains(content);
-        });
+        addToList(s -> s == null || ((String) s).contains(content));
         return this;
     }
 }

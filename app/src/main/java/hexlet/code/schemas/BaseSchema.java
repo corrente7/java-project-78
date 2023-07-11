@@ -22,7 +22,7 @@ public abstract class BaseSchema {
      * @param predicate
      * @return list of the predicates
      */
-    public List<Predicate> addToList(Predicate predicate) {
+    protected List<Predicate> addToList(Predicate predicate) {
         list.add(predicate);
         return list;
     }

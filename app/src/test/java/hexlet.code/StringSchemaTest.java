@@ -33,4 +33,10 @@ public final class StringSchemaTest {
         boolean expected = schema1.contains("at").isValid("what does the fox say");
         assertThat(expected).isTrue();
     }
+
+    @Test
+    void testMinLength() {
+        boolean expected = schema1.minLength(4).isValid("check");
+        assertThat(expected).isTrue();
+    }
 }
