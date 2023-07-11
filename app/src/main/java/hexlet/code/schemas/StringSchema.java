@@ -12,7 +12,7 @@ public final class StringSchema extends BaseSchema {
     }
 
     public StringSchema minLength(int minLength) {
-        addToList( s -> s == null || ((String) s).length() >= minLength);
+        addToList(s -> s == null || ((String) s).length() >= minLength);
         return this;
     }
 
