@@ -27,6 +27,4 @@ update-deps:
 
 build-run: build run
 
-@[ ! -e $@] || mv $@ $@.bak
-
 .PHONY: build
