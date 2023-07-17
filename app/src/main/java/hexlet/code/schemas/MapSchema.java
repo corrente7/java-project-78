@@ -8,11 +8,6 @@ public final class MapSchema extends BaseSchema {
         addToList(map -> map == null || map instanceof Map);
     }
 
-    public MapSchema required() {
-        addToList(map -> map != null);
-        return this;
-    }
-
     public MapSchema sizeof(int size) {
         addToList(map -> map == null || ((Map) map).size() == size);
         return this;

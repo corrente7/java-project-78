@@ -35,9 +35,10 @@ public final class MapSchemaTest {
         Map<String, String> data = new HashMap<>();
         data.put("key1", "value1");
         assertThat(schema3.isValid(data)).isTrue(); // true
+        schema3.sizeof(1);
+        assertThat(schema3.isValid(data)).isTrue(); // true
         schema3.sizeof(2);
-        boolean expected = schema3.isValid(data); // false
-        assertThat(expected).isFalse();
+        assertThat(schema3.isValid(data)).isFalse(); // false
     }
 
     @Test

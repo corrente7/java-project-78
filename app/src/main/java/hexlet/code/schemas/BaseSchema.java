@@ -14,6 +14,7 @@ public abstract class BaseSchema {
      * @return scheme is valid or not
      */
     public boolean isValid(Object object) {
+
         return list.stream().allMatch(s -> s.test(object));
     }
 
@@ -25,5 +26,15 @@ public abstract class BaseSchema {
     protected List<Predicate> addToList(Predicate predicate) {
         list.add(predicate);
         return list;
+    }
+
+    /**
+     * Doesn't permit to use 'null' as a value.
+     * @return schema
+     */
+
+    public BaseSchema required() {
+        addToList(s -> s != null);
+        return this;
     }
 }

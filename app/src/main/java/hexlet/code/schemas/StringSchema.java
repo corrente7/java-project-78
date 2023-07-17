@@ -6,6 +6,7 @@ public final class StringSchema extends BaseSchema {
         this.addToList(s -> s == null || s instanceof String);
     }
 
+    @Override
     public StringSchema required() {
         addToList(s -> s != null && !s.equals(""));
         return this;

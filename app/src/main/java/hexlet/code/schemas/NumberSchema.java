@@ -6,11 +6,6 @@ public final class NumberSchema extends BaseSchema {
         addToList(num -> num == null | num instanceof Integer);
     }
 
-    public NumberSchema required() {
-        addToList(num -> num != null);
-        return this;
-    }
-
     public NumberSchema positive() {
         addToList(num -> num == null || (Integer) num > 0);
         return this;

@@ -17,26 +17,23 @@ public final class StringSchemaTest {
     @Test
     void testRequired() {
         assertThat(schema1.isValid(null)).isTrue();
+        assertThat(schema1.isValid("")).isTrue();
+        assertThat(schema1.isValid("rt")).isTrue();
+        assertThat(schema1.isValid(5)).isFalse();
         schema1.required();
-        boolean expected = schema1.isValid(null);
-        assertThat(expected).isFalse();
-    }
-
-    @Test
-    void testWithNumber() {
-        boolean expected = schema1.isValid(5);
-        assertThat(expected).isFalse();
+        assertThat(schema1.isValid(null)).isFalse();
+        assertThat(schema1.isValid("")).isFalse();
     }
 
     @Test
     void testContains() {
-        boolean expected = schema1.contains("at").isValid("what does the fox say");
-        assertThat(expected).isTrue();
+        assertThat(schema1.contains("at").isValid("what does the fox say")).isTrue();
+        assertThat(schema1.contains("rt").isValid("what does the fox say")).isFalse();
     }
 
     @Test
     void testMinLength() {
-        boolean expected = schema1.minLength(4).isValid("check");
-        assertThat(expected).isTrue();
+        assertThat(schema1.minLength(4).isValid("check")).isTrue();
+        assertThat(schema1.minLength(6).isValid("check")).isFalse();
     }
 }
