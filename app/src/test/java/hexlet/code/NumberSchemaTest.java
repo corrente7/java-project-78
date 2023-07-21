@@ -26,6 +26,7 @@ public final class NumberSchemaTest {
 
     @Test
     void testRange() {
+        assertThat(schema2.range(5, 10).isValid(3)).isFalse();
         assertThat(schema2.range(5, 10).isValid(5)).isTrue();
         assertThat(schema2.range(5, 10).isValid(7)).isTrue();
         assertThat(schema2.range(5, 10).isValid(12)).isFalse();

@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 
 public abstract class BaseSchema {
 
-    private List<Predicate> list = new ArrayList<>();
+    private List<Predicate> predicates = new ArrayList<>();
 
     /**
      * Checks validity of the scheme.
@@ -15,7 +15,7 @@ public abstract class BaseSchema {
      */
     public boolean isValid(Object object) {
 
-        return list.stream().allMatch(s -> s.test(object));
+        return predicates.stream().allMatch(s -> s.test(object));
     }
 
     /**
@@ -24,8 +24,8 @@ public abstract class BaseSchema {
      * @return list of the predicates
      */
     protected List<Predicate> addToList(Predicate predicate) {
-        list.add(predicate);
-        return list;
+        predicates.add(predicate);
+        return predicates;
     }
 
     /**
